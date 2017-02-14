@@ -64,8 +64,8 @@ class CoCMessageEncoder:
         elif type in self._definitions["component"]:
             self._encode_fields(writer, data, self._definitions["component"][type]["fields"])
             if "extensions" in self._definitions["component"][type]:
-                if not data["payload"]["id"] in self._definitions["component"][type]["extensions"]:
-                    raise NotImplementedError("{}(id={}) has not yet been implemented.".format(type, data["payload"]["id"]))
-                self._encode_fields(writer, data["payload"], self._definitions["component"][type]["extensions"][data["payload"]["id"]]["fields"])
+                if not data["id"] in self._definitions["component"][type]["extensions"]:
+                    raise NotImplementedError("{}(id={}) has not yet been implemented.".format(type, data["id"]))
+                self._encode_fields(writer, data["payload"], self._definitions["component"][type]["extensions"][data["id"]]["fields"])
         else:
             raise NotImplementedError("{} has not yet been implemented.".format(type))
